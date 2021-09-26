@@ -15,8 +15,7 @@ install:
 	fi
 	@install -Dm755 -t "$(DESTDIR)/etc/grub.d/" 41_snapshots-btrfs
 	@install -Dm644 -t "$(DESTDIR)/etc/default/grub-btrfs/" config
-	@install -Dm644 -t "$(LIB_DIR)/systemd/system/" grub-btrfs.service
-	@install -Dm644 -t "$(LIB_DIR)/systemd/system/" grub-btrfs.path
+	@install -Dm755 -t "$(DESTDIR)/etc/init.d" grub-btrfs-rc
 	@install -Dm644 -t "$(SHARE_DIR)/licenses/$(PKGNAME)/" LICENSE
 	@# Arch Linux like distros only :
 	@if test "$(INITCPIO)" = true; then \
@@ -35,8 +34,7 @@ uninstall:
 	 rm -f "$${grub_dirname:-/boot/grub}/grub-btrfs.cfg"
 	@rm -f "$(DESTDIR)/etc/default/grub-btrfs/config"
 	@rm -f "$(DESTDIR)/etc/grub.d/41_snapshots-btrfs"
-	@rm -f "$(LIB_DIR)/systemd/system/grub-btrfs.service"
-	@rm -f "$(LIB_DIR)/systemd/system/grub-btrfs.path"
+	@rm -f "$(DESTDIR)/etc/init.d/grub-btrfs-rc"
 	@rm -f "$(LIB_DIR)/initcpio/install/grub-btrfs-overlayfs"
 	@rm -f "$(LIB_DIR)/initcpio/hooks/grub-btrfs-overlayfs"
 	@# Arch Linux UNlike distros only :
