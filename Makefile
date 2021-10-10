@@ -16,6 +16,7 @@ install:
 	@install -Dm755 -t "$(DESTDIR)/etc/grub.d/" 41_snapshots-btrfs
 	@install -Dm644 -t "$(DESTDIR)/etc/default/grub-btrfs/" config
 	@install -Dm755 -t "$(DESTDIR)/etc/init.d" grub-btrfs-rc
+        @install -Dm755 -t "$(DESTDIR)/usr/bin" grub-btrfsd
 	@install -Dm644 -t "$(SHARE_DIR)/licenses/$(PKGNAME)/" LICENSE
 	@# Arch Linux like distros only :
 	@if test "$(INITCPIO)" = true; then \
